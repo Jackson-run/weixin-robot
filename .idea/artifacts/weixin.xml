@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="weixin">
+    <output-path>$PROJECT_DIR$/out/artifacts/weixin</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="weixin-robot" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.scala-lang:scala-library:2.11.8" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="weixin-robot/web/Web" />
+    </root>
+  </artifact>
+</component>
