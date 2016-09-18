@@ -2,7 +2,8 @@ package com.xuxue.robot.scala.servlet
 
 import javax.servlet.http.{HttpServlet, HttpServletRequest, HttpServletResponse}
 
-import com.xuxue.robot.scala.tuling.TuLingRobot
+import com.xuxue.robot.scala.conf.TuLingConfig
+import com.xuxue.robot.scala.tuling.{Question, TuLingRobot}
 import com.xuxue.robot.scala.util.StreamReader
 
 import scala.util.{Failure, Success, Try}
@@ -15,6 +16,8 @@ class WeiXinRobotServlet extends HttpServlet {
 
 
   val robot = new TuLingRobot
+  
+  val tulingConf=TuLingConfig()
 
   override def doGet(req: HttpServletRequest,
                      resp: HttpServletResponse): Unit = {
@@ -34,52 +37,75 @@ class WeiXinRobotServlet extends HttpServlet {
       };
       case Failure(e) => println("failed")
     }
+	 out.flush()
     out.close()
-    out.flush()
   }
 
   override def doPost(request: HttpServletRequest,
                       response: HttpServletResponse): Unit = {
-    println("recive post")
+    println("post")
     val stream = request.getInputStream
-    println(StreamReader.toUTF8String(stream))
-    /*val xml=XML.load(stream);
-    replay(null,response,xml)
-    println(xml)*/
+    val xml=XML.load(stream);
+    stream.close()
+    println("load xml"+xml)
+    replay(response,xml)
   }
 
 
-  def replay(msg: String, response: HttpServletResponse, reciveXml: Node): Unit = {
-
+  def replay(response: HttpServletResponse, reciveXml: Node): Unit = {
     response.setContentType("text/html charset=\"utf-8\"");
     response.setCharacterEncoding("utf-8")
-    val xml =
-      <xml>
-        <ToUserName>
-          {(reciveXml \\ "FromUserName").text}
-        </ToUserName>
-        <FromUserName>
-          {(reciveXml \\ "ToUserName").text}
-        </FromUserName>
-        <CreateTime>
-          {System.currentTimeMillis() / 1000}
-        </CreateTime>
-        <MsgType>text</MsgType>
-        <Content>
-          {(reciveXml \\ "Content").text}
-        </Content>
-      </xml>
+    
+    println("recive xml is"+reciveXml)
+    System.out.println((reciveXml \\ "Content").text)
+    
+    val question=new Question(tulingConf.key,
+      (reciveXml \\ "Content").text,
+      null,
+      (reciveXml \\ "FromUserName").text)
+    println("question is"+question)
+    val xml= robot.getAnswer(question,
+      (reciveXml \\ "FromUserName").text
+      ,(reciveXml \\ "ToUserName").text)
+    
     val w = response.getWriter
-
+    
     println(xml.toString())
     w.write(xml.toString())
     w.flush()
     w.close()
   }
-
 }
 
 
 object WeiXinRobotServlet {
   val TOKEN = "xuxuerobot"
+  
+  def main(args: Array[String]): Unit = {
+  
+  
+    val robot = new TuLingRobot
+    
+    val tuLingConfig=TuLingConfig()
+    
+    val reciveXml=
+      <xml><ToUserName>gh_e2032e32b422</ToUserName>
+    <FromUserName>oGGwgxDRpVnCCqPJD-KFWThBcqBA</FromUserName>
+      <CreateTime>1474093515</CreateTime>
+      <MsgType>text</MsgType>
+      <Content>你好呀</Content>
+      <MsgId>6331183438590744987</MsgId>
+    </xml>
+    val question=new Question(tuLingConfig.key,
+      (reciveXml \\ "Content").text,
+      null,
+      (reciveXml \\ "FromUserName").text)
+    println("question is"+question)
+    val xml= robot.getAnswer(question,
+      (reciveXml \\ "FromUserName").text
+      ,(reciveXml \\ "ToUserName").text)
+    
+    println(xml)
+  
+  }
 }
