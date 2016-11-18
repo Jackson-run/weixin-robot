@@ -45,5 +45,12 @@
     <orderEntry type="library" name="Maven: org.parboiled:parboiled-core:1.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.parboiled:parboiled-scala:1.0.2" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.2.4" level="project" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.35" level="project" />
+    <orderEntry type="library" name="Maven: io.netty:netty-all:4.0.4.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-server:9.1.0.v20131115" level="project" />
+    <orderEntry type="library" name="Maven: javax.servlet:javax.servlet-api:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-http:9.1.0.v20131115" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-util:9.1.0.v20131115" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-io:9.1.0.v20131115" level="project" />
   </component>
 </module>

@@ -23,6 +23,13 @@
           <element id="library" level="project" name="Maven: org.parboiled:parboiled-core:1.0.2" />
           <element id="library" level="project" name="Maven: org.parboiled:parboiled-scala:1.0.2" />
           <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.2.4" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.35" />
+          <element id="library" level="project" name="Maven: io.netty:netty-all:4.0.4.Final" />
+          <element id="library" level="project" name="Maven: org.eclipse.jetty:jetty-server:9.1.0.v20131115" />
+          <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:3.1.0" />
+          <element id="library" level="project" name="Maven: org.eclipse.jetty:jetty-http:9.1.0.v20131115" />
+          <element id="library" level="project" name="Maven: org.eclipse.jetty:jetty-util:9.1.0.v20131115" />
+          <element id="library" level="project" name="Maven: org.eclipse.jetty:jetty-io:9.1.0.v20131115" />
         </element>
       </element>
       <element id="directory" name="META-INF">

@@ -12,6 +12,10 @@
         <servlet-name>Servlet2</servlet-name>
         <servlet-class>com.xuxue.robot.scala.servlet.WeiXinRobotServlet</servlet-class>
     </servlet>
+  <servlet>
+    <servlet-name>Company</servlet-name>
+    <servlet-class>com.xuxue.robot.scala.servlet.Company</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>Servlet2</servlet-name>
     <url-pattern>/robot</url-pattern>
@@ -20,4 +24,8 @@
     <servlet-name>Servlet</servlet-name>
     <url-pattern>/TestServlet</url-pattern>
   </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>Company</servlet-name>
+      <url-pattern>/company</url-pattern>
+    </servlet-mapping>
 </web-app>
